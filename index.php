@@ -81,7 +81,8 @@ function getScripts($files)
         $read = exec("{$scripts[$key]['command']} {$scripts[$key]['name']}");
         $string_array = explode(" ", $read);
         // print_r($string_array);
-
+        
+        // get values from string array
         $id = isset($string_array[9]) ? $string_array[9] : '';
         $name =  isset($string_array[4]) && isset($string_array[5]) ? $string_array[4].' '.$string_array[5] : '';
         $email = isset($string_array[12]) ? $string_array[12]  :'';
@@ -101,7 +102,7 @@ function getScripts($files)
 
 
      function testStringContents($string){
-        if(preg_match('/^Hello\sWorld[,|.|!]?$/i', trim($string))){
+        if(preg_match('/^Hello\sWorld[,|.|!]?\sthis\sis\s[a-zA-Z]{2,}\s[a-zA-Z]{2,}\swith\sHNGi7\sID\s(HNG-\d{3,})\sand\semail\s([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})\susing\s[a-zA-Z|#]{2,}\sfor\sstage\s2\stask.?$/i', trim($string))){
             return 'Pass';
         }
 
