@@ -99,16 +99,16 @@ function getScripts($files)
             "name"  => $name,    
             'id' => $id,
             'email' => $email,
-            'status' => testStringContents($read),
+            'status' => testStringContentsMatch($read),
             'language' => $language,
 
         ];
 
-        $htmlOutput[] = [$read, testStringContents($read), $name];
+        $htmlOutput[] = [$read, testStringContentsMatch($read), $name];
     }}
 
 
-     function testStringContents($string){
+     function testStringContentsMatch($string){
         if(preg_match('/^Hello\sWorld[,|.|!]?\sthis\sis\s[a-zA-Z]{2,}\s[a-zA-Z]{2,}\swith\sHNGi7\sID\s(HNG-\d{3,})\sand\semail\s([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})\susing\s[a-zA-Z|#]{2,}\sfor\sstage\s2\stask.?$/i', trim($string))){
             return 'Pass';
         }
@@ -144,11 +144,72 @@ foreach ($htmlOutput as $test) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title> HNGi7 task 1| Team storm</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 </head>
 
 <body>
-    <h2>TEAM STORM TASK ONE</h2>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <a class="navbar-brand text-light" href="#">HNGi7 Team Storm</a>
+        <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation"></button>
+        <div class="collapse navbar-collapse" id="collapsibleNavId">
+            <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                <!-- links here -->
+                <!-- <li class="nav-item active">
+                    <a class="nav-link" href="#">Home</a>
+                </li> -->
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <table class="table table-striped">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Output</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+
+
+                <!-- // number of rows for loop counting
+                // $rows = 0;
+
+                // foreach($htmlOutput as $test=>$index){
+                // echo <<<EOD // <tr>
+                    // <td scope="row">$rows</td>
+                    // <td></td>
+                    // <td></td>
+                    // <td></td>
+                    // </tr>
+                    // EOD;
+                    // } -->
+
+
+
+                <!-- // <tr>
+                    // <td scope="row"></td>
+                    // <td></td>
+                    // <td></td>
+                    // <td></td>
+                    // </tr> -->
+            </tbody>
+            <thead class="thead-inverse">
+                <tr>
+                    <th>#</th>
+                    <th>Full Name</th>
+                    <th>Output</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
 </body>
 
 </html>
