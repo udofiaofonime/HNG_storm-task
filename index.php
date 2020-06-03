@@ -1,4 +1,6 @@
 <?php
+
+$json_request = $_SERVER["QUERY_STRING"] ?? '';
 // $file = 'echo.php';
 
 // if (file_exists($file)) {
@@ -42,6 +44,9 @@
 // Get scripts (from yanmifeakeju)
 $files = scandir('scripts');
 $content = [];
+$testPassed = 0;
+$testFailed = 0;
+$htmlOutput = [];
 
 
 function getScripts($files)
@@ -98,6 +103,8 @@ function getScripts($files)
             'language' => $language,
 
         ];
+
+        $htmlOutput[] = [$read, testStringContents($read), $name];
     }}
 
 
@@ -109,6 +116,40 @@ function getScripts($files)
         return 'Fail';
     }
 
+
+foreach ($htmlOutput as $test) {
+    if ($test[1] == 'Pass') {
+        $testPassed++;
+    } elseif ($test[1] == 'Fail') {
+        $testFailed++;
+    }
+}
+
     
-   echo json_encode($content);
-  
+   
+
+//    echo $testFailed.''.$testPassed;
+
+   if(isset($json_request) && $json_request == 'json'){
+        echo json_encode($content);
+   }else {
+
+    ?>
+
+<!-- FRONTEND CODE HERE -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>TEAM STORM TASK ONE</h2>
+</body>
+
+</html>
+<?php } ?>
